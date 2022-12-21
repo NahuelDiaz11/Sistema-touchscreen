@@ -12,12 +12,30 @@
         <title>Sistema de Ventas Web - Tactil</title>
         <!-- BEGIN: CSS Assets-->
         <link rel="stylesheet" href="{{ asset('dist/css/app.css')}}" />
-        <link rel="stylesheet" href="{{ asset('dist/css/app.css')}}" />
-        <link rel="stylesheet" href="{{ asset('dist/css/app.css')}}" />
-        <link rel="stylesheet" href="{{ asset('dist/css/app.css')}}" />
+        <link rel="stylesheet" href="{{ asset('css/all.css')}}" />
+        <link rel="stylesheet" href="{{ asset('css/snackbar.min.css')}}" />
+        <script src="{{ asset ('js/kioskboard.js')}}"></script>
         <!-- END: CSS Assets-->
+
+        <style>
+            .image-fit>img{
+                object-fit: containt!important;
+            }
+
+        /* estilos para parrafos  */
+        nav p{
+            display: none !important;
+        }
+
+        </style>
+
+        @livewireStyles
+
+
     </head>
     <!-- END: Head -->
+
+
     <body class="main">
         <!-- BEGIN: Mobile Menu -->
         @include('laouts.theme.mobile-menu')
@@ -46,5 +64,8 @@
         <!-- BEGIN: JS Assets-->
         @include('laouts.theme.footer')
         <!-- END: JS Assets-->
+
+        @livewireScripts
+
     </body>
 </html>
