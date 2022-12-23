@@ -38,16 +38,16 @@
 
     <body class="main">
         <!-- BEGIN: Mobile Menu -->
-        @include('laouts.theme.mobile-menu')
+        @include('layouts.theme.mobile-menu')
         <!-- END: Mobile Menu -->
         <div class="flex">
             <!-- BEGIN: Side Menu -->
-            @include('laouts.theme.sidebar')
+            @include('layouts.theme.sidebar')
             <!-- END: Side Menu -->
             <!-- BEGIN: Content -->
             <div class="content">
                 <!-- BEGIN: Top Bar -->
-                @include('laouts.theme.topbar')
+                @include('layouts.theme.topbar')
                 <!-- END: Top Bar -->
 
               {{$slot}}
@@ -62,7 +62,7 @@
         </div> --}}
         <!-- END: Dark Mode Switcher-->
         <!-- BEGIN: JS Assets-->
-        @include('laouts.theme.footer')
+        @include('layouts.theme.footer')
         <!-- END: JS Assets-->
 
         @livewireScripts

@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Livewire\Categories;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 
@@ -13,6 +14,8 @@ use Illuminate\Support\Facades\Route;
 | contains the "web" middleware group. Now create something great!
 |
 */
+
+Route::get('categories', Categories::class)->name('categories');
 
 Route::get('/', function () {
     return view('welcome');
