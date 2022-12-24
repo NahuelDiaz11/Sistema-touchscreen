@@ -8,4 +8,14 @@ use Illuminate\Database\Eloquent\Model;
 class Category extends Model
 {
     use HasFactory;
+
+    protected $fillable = ['name'];
+    public static function rules($id){
+        //Actualizacion de categoria
+        if($id<=0){
+
+
+        }
+
+    }
 }

@@ -3,6 +3,9 @@
 namespace Database\Seeders;
 
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
+
+use App\Models\Order;
+use App\Models\Product;
 use Illuminate\Database\Seeder;
 
 class DatabaseSeeder extends Seeder
@@ -20,5 +23,19 @@ class DatabaseSeeder extends Seeder
         //     'name' => 'Test User',
         //     'email' => 'test@example.com',
         // ]);
+
+        \App\Models\User::factory(5)->create();
+        \App\Models\Category::factory(5)->create();
+        \App\Models\Product::factory(10)->create();
+        \App\Models\Customer::factory(10)->create();
+        //por cada una de las factory en $order vamos a tener esa instancia en la base de datos
+        Order::factory(5)->create()->each(function($order){
+            $order->details()->create([
+                'order_id'=>$order->id,
+                'product_id'=>Product::all()->random()->id,
+                'quantity'=>$order->items,
+                'price'=>$order->total / $order->items
+            ]);
+        });
     }
 }

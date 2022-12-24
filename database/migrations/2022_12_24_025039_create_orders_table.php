@@ -15,6 +15,16 @@ return new class extends Migration
     {
         Schema::create('orders', function (Blueprint $table) {
             $table->id();
+            $table->decimal('total',10,2)->default(0);
+            $table->decimal('shipping',10,2)->default(0); //costo de envio
+            $table->integer('items')->default(0); //cantidad vendidos
+            $table->decimal('discount',10,2)->default(0);
+            $table->enum('type',['Web','Local'])->default('Local');
+            $table->enum('status',['Delivered','Pending'])->default('Delivered');
+            $table->foreignId('user_id')->constrained();
+            $table->foreignId('customer_id')->constrained();
+            $table->string('notes',255)->nullable();
+            $table->datetime('delivery_date')->nullable();
             $table->timestamps();
         });
     }
