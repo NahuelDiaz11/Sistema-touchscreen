@@ -18,7 +18,7 @@ use Illuminate\Support\Facades\Route;
 Route::get('categories', Categories::class)->name('categories');
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('auth.login');
 });
 
 Route::get('/dashboard', function () {
