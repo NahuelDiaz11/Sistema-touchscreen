@@ -38,7 +38,7 @@ class Category extends Model
     }
 
     function image(){
-        return $this->morphOne(Image::class,'model')->withDefault(); //con el with si obtenemos null nos devuelve una instanca vacoa de image
+        return $this->morphOne(Image::class,'model')->withDefault(); //con el with si obtenemos null nos devuelve una instanca vacia de image
     }
 
     //mutators y accessors
@@ -51,7 +51,7 @@ class Category extends Model
             else
             return 'storage/image-not-found.png'; //cuando no existe imagen
         }
-        return 'storage/noimg.jpg'; //cuando no tiene imagen asociado en en la bd
+        return 'storage/noimg.jpg'; //cuando no tiene imagen asociado en la bd
     }
 
 }

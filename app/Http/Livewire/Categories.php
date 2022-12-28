@@ -15,6 +15,8 @@ class Categories extends Component
 
     public function render()
     {
-        return view('livewire.categories.component')->layout('layouts.theme.app');
+        return view('livewire.categories.component', [
+            'categories'=>[] //retorno categorias a un array vacio
+        ])->layout('layouts.theme.app');
     }
 }
