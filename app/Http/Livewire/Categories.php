@@ -2,12 +2,20 @@
 
 namespace App\Http\Livewire;
 
+
 use App\Models\Category;
 use App\Models\Image;
+use GrahamCampbell\ResultType\Success;
 use Livewire\Component;
+use Livewire\WithPagination;
+use Livewire\WithFileUploads;
 
 class Categories extends Component
 {
+
+    use WithPagination;
+    use WithFileUploads;
+
     //propiedades publicas
     public $form = false, $name = '', $selected_id = 0, $photo = '';
     public $action = 'Listado', $componentName = 'Categorias', $search = '';
@@ -29,8 +37,33 @@ class Categories extends Component
             ->layout('layouts.theme.app');
     }
 
-    public function Edit(Category $catgory)
+    public function Edit(Category $category)
     {
+        $this->selected_id = $category->id;
+        $this->name = $category->name;
+        $this->action = 'Editar';
+        $this->form = true;
+    }
+
+    public function resetUI()
+    {
+        //todos los mensajes en rojo que se muestran como error se resetea
+        $this->resetValidation();
+        //nos vuelve a la pagina principal si eliminamos en otra pagina que no sea la principal
+        $this->resetPage();
+        //regresa todas las propiedades
+        $this->reset('name', 'selected_id', 'search', 'action', 'componentName', 'photo', 'form');
+    }
+    public function noty($msg, $eventName='noty', $reset = true, $action='')
+    {
+        $this->dispatchBrowserEvent($eventName,['msg'=>$msg, 'type'=>'success', 'action'=>$action]);
+        if($reset) $this->resetUI();
+    }
+
+    public function CloseModal()
+    {
+        $this->resetUI();
+        $this->noty(null,'close-modal');
     }
 
     public function Store()
@@ -54,7 +87,7 @@ class Categories extends Component
             }
 
             //se elimina la relacion con imagenes de la base de datos
-            $category->image()->delate();
+            $category->image()->delete();
             //generamos un nombre de archivo unico
             $customFileName = uniqid() . '_.' . $this->photo->extension();
             //guardamos imagen en esta ruta con el nombre unico
@@ -76,4 +109,16 @@ class Categories extends Component
 
         $this->resetUI();
     }
+
+    public function Destroy(Category $category)
+    {
+        $category->delete();
+        $this->noty('Se elimino la categoria');
+    }
+
+    //se escuchan los eventros resetui y destroy
+    public $listeners = [
+        'resetUI','Destroy'
+    ];
+
 }
