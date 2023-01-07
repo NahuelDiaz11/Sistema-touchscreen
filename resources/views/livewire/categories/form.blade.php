@@ -17,7 +17,10 @@
                         placeholder="ingresa la descripcion">
 
                     @error('name')
-                        <x-alert msg="{{ $message }}" />
+                        
+                        <x-alert>
+                        {{$message}}
+                        </x-alert>
                     @enderror
                 </div>
                 <div class="mt-3">
