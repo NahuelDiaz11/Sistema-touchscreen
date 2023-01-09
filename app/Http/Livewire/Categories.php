@@ -88,9 +88,9 @@ class Categories extends Component
 
             //se elimina la relacion con imagenes de la base de datos
             $category->image()->delete();
-            //generamos un nombre de archivo unico
+            //genera un nombre de archivo unico
             $customFileName = uniqid() . '_.' . $this->photo->extension();
-            //guardamos imagen en esta ruta con el nombre unico
+            //guarda imagen en esta ruta con el nombre unico
             $this->photo->storeAs('public/categories', $customFileName);
 
             //creamos registro en la bd
