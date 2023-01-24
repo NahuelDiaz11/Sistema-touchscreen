@@ -49,4 +49,55 @@ class Products extends Component
             'categories' => Category::orderBy('name', 'asc')->get()
         ])->layout('layouts.theme.app');
     }
+
+    public $listeners = ['resetUI', 'Destroy'];
+
+    public function noty($msg, $eventName='noty',$reset=true, $action ='')
+    {
+        $this->dispatchBrowserEvent($eventName, ['msg'=>$msg, 'type'=>'success', 'action'=>$action]);
+        if($reset) $this->resetUI();
+    }
+
+    //agregar nuevos registros
+    public function AddNew()
+    {
+        $this->resetUI();
+        //resetea propiedades y hace una notificacion para que de la part del front se abra una modal
+        $this->noty(null, 'open-modal');
+    }
+
+    //limpia todos los mensajes en rojo al momento de guardar o actualizar
+    //resetea pagina y campos
+    public function resetUI()
+    {
+        $this->resetValidation();
+        $this->resetPage();
+        $this->reset('name','code','cost','price','price2','stock','minstock','selected_id','search','action','gallery');
+
+    }
+
+    public function CloseModal()
+    {
+        $this->resetUI();
+        $this->noty(null,'close-modal');
+
+    }
+
+    public function Edit(Product $product)
+    {
+        $this->selected_id=$product->id;
+        $this->name=$product->name;
+        $this->code=$product->code;
+        $this->cost=$product->cost;
+        $this->price=$product->price;
+        $this->price2=$product->price2;
+        $this->stock=$product->stock;
+        $this->minstock=$product->minstock;
+        $this->category=$product->category_id;
+        //se hace una notificacion a travez de noty y le pasamos open modal para que se despliegue el modal y false para que no se reseteen las propiedades
+        $this->noty('', 'open-modal',false);
+    }
+
+
+
 }
