@@ -11,11 +11,13 @@
             text: event.detail.msg,  //mensaje enviado desde el backend
             actionText: 'CERRAR',
             actionTextColor: '#fff',
-            backgroundColor: event.detail.type == 'succes' ? '#2187EC' : '#e7515a',
+            backgroundColor: event.detail.type == 'success' ? '#2187EC' : '#e7515a',
             pos: 'top-right'
 
         })
     })
+
+
 
     //ventanas de notificacion si se quiere elliminar usuarios del sistema
     //componentName sabemos a que componente le vamos a mandar la notificacion
@@ -41,5 +43,6 @@
         })
 
     }
+
 
 </script>

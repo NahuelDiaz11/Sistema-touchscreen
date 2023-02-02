@@ -12,29 +12,77 @@ use Livewire\WithFileUploads;
 
 class Categories extends Component
 {
-
     use WithPagination;
     use WithFileUploads;
 
-    //propiedades publicas
-    public $form = false, $name = '', $selected_id = 0, $photo = '';
-    public $action = 'Listado', $componentName = 'Categorias', $search = '';
+
+    public $name = '', $selected_id = 0, $photo = '';
+    public $action = 'Listado', $componentName = 'Categorías', $search, $form = false;
     private $pagination = 4;
     protected $paginationTheme = 'tailwind';
 
 
+
     public function render()
     {
+
+
         if (strlen($this->search) > 0)
             $info = Category::where('name', 'like', "%{$this->search}%")->paginate($this->pagination);
         else
-            $info = Category::orderBy('name', 'asc')->paginate($this->pagination);
+            $info = Category::paginate($this->pagination);
 
 
-        return view('livewire.categories.component', [
-            'categories' => $info
-        ])
+        return view('livewire.categories.component', ['categories' => $info])
             ->layout('layouts.theme.app');
+    }
+
+    public $listeners = [
+        'resetUI',
+        'Destroy'
+    ];
+
+    public function updatedForm()
+    {
+        if($this->selected_id > 0)
+            $this->action ='Editar';
+        else
+            $this->action ='Agregar';
+
+    }
+
+
+    public function noty($msg, $eventName = 'noty', $reset = true, $action = '')
+    {
+        $this->dispatchBrowserEvent($eventName, ['msg' => $msg, 'type' => 'success', 'action' => $action]);
+        if ($reset) $this->resetUI();
+    }
+
+
+
+/*
+    public function AddNew()
+    {
+        $this->resetUI();
+        $this->form = true;
+        $this->action = 'Agregar';
+    }
+    */
+
+    public function CloseModal()
+    {
+        $this->resetUI();
+        $this->noty(null, 'close-modal');
+    }
+
+    public function resetUI()
+    {
+        // limpiar mensajes rojos de validación
+        $this->resetValidation();
+        // regresar a la página inicial del componente
+        $this->resetPage();
+        // regresar propiedades a su valor por defecto
+        $this->reset('name', 'selected_id', 'search', 'action', 'componentName', 'photo', 'form');
     }
 
     public function Edit(Category $category)
@@ -43,82 +91,52 @@ class Categories extends Component
         $this->name = $category->name;
         $this->action = 'Editar';
         $this->form = true;
-    }
 
-    public function resetUI()
-    {
-        //todos los mensajes en rojo que se muestran como error se resetea
-        $this->resetValidation();
-        //nos vuelve a la pagina principal si eliminamos en otra pagina que no sea la principal
-        $this->resetPage();
-        //regresa todas las propiedades
-        $this->reset('name', 'selected_id', 'search', 'action', 'componentName', 'photo', 'form');
-    }
-    public function noty($msg, $eventName='noty', $reset = true, $action='')
-    {
-        $this->dispatchBrowserEvent($eventName,['msg'=>$msg, 'type'=>'success', 'action'=>$action]);
-        if($reset) $this->resetUI();
-    }
-
-    public function CloseModal()
-    {
-        $this->resetUI();
-        $this->noty(null,'close-modal');
     }
 
     public function Store()
     {
-        //actualizar o crear nuevas categorias
         sleep(1);
+
         $this->validate(Category::rules($this->selected_id), Category::$messages);
 
-
-        $category = Category::updatOrCreate([
+        $category = Category::updateOrCreate(
             ['id' => $this->selected_id],
             ['name' => $this->name]
-        ]);
+        );
 
-        //si tenemos una nueva imagen se elimina la previa
+        // image
         if (!empty($this->photo)) {
-            //se elimina las imagenes de la carpeta
-            $tempImg = $category->imag->file;
+            // delete all images in drive
+            $tempImg = $category->image->file;
             if ($tempImg != null && file_exists('storage/categories/' . $tempImg)) {
-                unlink('storage/categoris/', $tempImg);
+                unlink('storage/categories/' . $tempImg);
             }
-
-            //se elimina la relacion con imagenes de la base de datos
+            // delete relationship image from db
             $category->image()->delete();
-            //genera un nombre de archivo unico
+
+            // generate random file name
             $customFileName = uniqid() . '_.' . $this->photo->extension();
-            //guarda imagen en esta ruta con el nombre unico
             $this->photo->storeAs('public/categories', $customFileName);
 
-            //creamos registro en la bd
+            // save image record
             $img = Image::create([
                 'model_id' => $category->id,
-                'model_type' => 'App\Models\Category',
+                'model_type' => 'App\Models\User',
                 'file' => $customFileName
-
             ]);
-            //guardar relacion
+
+            // save relationship
             $category->image()->save($img);
         }
-
-        //mandamos feedback
-        $this->noty($this->selected_id < 1 ? 'Categoria registrada' : 'Categoria actualizada', 'noty', false, 'close-modal');
-
+        $this->noty($this->selected_id < 1 ? 'Categoría Registrada' : 'Categoría Actualizada', 'noty', false, 'close-modal');
         $this->resetUI();
     }
+
 
     public function Destroy(Category $category)
     {
         $category->delete();
-        $this->noty('Se elimino la categoria');
+        $this->noty('Se eliminó la Categoría');
     }
-
-    //se escuchan los eventros resetui y destroy
-    public $listeners = [
-        'resetUI','Destroy'
-    ];
-
 }

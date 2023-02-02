@@ -32,7 +32,7 @@ class ProductFactory extends Factory
             'price'=>$price1,
             'price2'=>$price2,
             'stock'=>$stock,
-            'min_stock'=>$this->faker->randomElement([5,10,15,20,25]) //num random entre 5 y 25
+            'minstock'=>$this->faker->randomElement([5,10,15,20,25]) //num random entre 5 y 25
 
 
 

@@ -38,17 +38,20 @@
                                                     {{-- si es menor a 1 no tiene productos relacionada  y puede eliminarse--}}
                                                     @if ($category->products->count() < 1)
                                                         <button class="btn btn-danger text-white border-0"
-
-                                                            onclick="destroy('categories', 'destroy', {{ $category->id }})">
+                                                            type="button"
+                                                            onclick="destroy('categories', 'Destroy', {{ $category->id }})">
                                                             <i class="fas fa-trash fa-2x"></i>
                                                         </button>
                                                     @endif
-                                                    <button class="btn btn-warning text-white border-0 ml-1"
-                                                        wire:click.prevent="Edit({{ $category->id }})">
+                                                    <button class="btn btn-warning text-white border-0 ml-1 ms"
+                                                    type="button"
+                                                    wire:click.prevent="Edit({{ $category->id }})">
                                                         <i class="fas fa-edit fa-2x"></i>
                                                     </button>
                                                 </div>
                                             </td>
+
+
                                         </tr>
                                     @empty
                                         <tr class="bg-gray-200 dark:bg-dark-1">

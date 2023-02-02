@@ -23,7 +23,7 @@ return new class extends Migration
             $table->decimal('price',10,2)->default(0); //precio de venta genral de productos
             $table->decimal('price2',10,2)->default(0); //precio especial
             $table->integer('stock')->default(0);
-            $table->integer('min_stock')->default(0);
+            $table->integer('minstock')->default(0);
             $table->timestamps();
         });
     }

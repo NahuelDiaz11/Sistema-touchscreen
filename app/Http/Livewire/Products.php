@@ -32,17 +32,15 @@ class Products extends Component
             //relaciones donde se busca por el nombre o por el codigo
             $info = Product::join('categories as c', 'c.id', 'products.category_id')
                 ->select('products.*', 'c.name as category')
-                ->where('products.name', 'like', "%($this->search)%")
-                ->orWhere('products.code', 'like', "%($this->search)%")
-                ->orWhere('c.name', 'like', "%($this->search)%")
+                ->where('products.name', 'like', "%{$this->search}%")
+                ->orWhere('products.code', 'like', "%{$this->search}%")
+                ->orWhere('c.name', 'like', "%{$this->search}%")
                 ->paginate($this->pagination);
 
         else
             $info = Product::join('categories as c', 'c.id', 'products.category_id')
                 ->select('products.*', 'c.name as category')
                 ->paginate($this->pagination);
-
-
 
 
         return view('livewire.products.component', [
@@ -58,6 +56,7 @@ class Products extends Component
         $this->dispatchBrowserEvent($eventName, ['msg' => $msg, 'type' => 'success', 'action' => $action]);
         if ($reset) $this->resetUI();
     }
+
 
     //agregar nuevos registros
     public function AddNew()
@@ -97,11 +96,13 @@ class Products extends Component
         $this->noty('', 'open-modal', false);
     }
 
-    //crea o actualiza registros
+    //guarda o actualiza registros
     public function Store()
     {
         sleep(1);
         $this->validate(Product::rules($this->selected_id), Product::$messages);
+
+
         $product = Product::updateOrCreate(
             ['id' => $this->selected_id],
             [
@@ -112,7 +113,7 @@ class Products extends Component
                 'price2' => $this->price2,
                 'stock' => $this->stock,
                 'minstock' => $this->minstock,
-                'category_id' => $this->category,
+                'category_id' => $this->category
             ]
         );
 
@@ -147,7 +148,8 @@ class Products extends Component
             }
         }
 
-        $this->noty($this->selected_id > 0 ? 'Producto Actualizado' : 'Producto Registrado', 'noty', false, 'close-modal');
+
+        $this->noty($this->selected_id > 1 ? 'Producto Actualizado' : 'Producto Registrado', 'noty', false, 'close-modal');
         $this->resetUI();
 
     }

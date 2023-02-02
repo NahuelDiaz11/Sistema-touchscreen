@@ -37,7 +37,7 @@ class Product extends Model
                 'price' => 'gt:0',
                 'cost' => 'gt:0',
                 'stock' => 'required',
-                'minstock' => 'required',
+                'minstock' => 'required'
             ];
 
         }
@@ -54,7 +54,7 @@ class Product extends Model
         'cost.gt' => 'El costo debe ser mayor a cero',
         'price.gt' => 'El precio debe ser mayor a cero',
         'stock.required' => 'Ingresa el stock',
-        'minstock.required' => 'Ingresa el stock maximo',
+        'minstock.required' => 'Ingresa el stock maximo'
 
     ];
 

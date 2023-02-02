@@ -17,7 +17,7 @@
                         placeholder="ingresa la descripcion">
 
                     @error('name')
-                        
+
                         <x-alert>
                         {{$message}}
                         </x-alert>

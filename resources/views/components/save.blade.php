@@ -3,14 +3,16 @@
 <!-- con wire loading si el metodo que se ejecuta es store se oculta el boton de guardar -->
 <button
 wire:click="Store"
-wire:loading.attr="disable"
+wire:loading.attr="disabled"
 {{$attributes->merge(['class' => 'btn btn-primary']) }}
 >
-<span wire:loading.remove wire:target="Store">
+ <span wire:loading.remove wire:target="Store">
     Guardar
 </span>
 <span wire:loading wire:target="Store">
     Procesando
-</span>
+ </span>
 
 </button>
+
+

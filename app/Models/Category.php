@@ -20,10 +20,11 @@ class Category extends Model
 
 
         }else{
-            return ['name'=>'required|min:3|max:50|unique:categories,name,{$id}']; //filtramos las categorias siempre cuando sea diferentes
+            return ['name'=>"required|min:3|max:50|unique:categories,name,{$id}"]; //filtra las categorias siempre cuando sea diferentes
         }
 
     }
+
 
     public static $messages = [
         'name.required'=>'Nombre requerido',
@@ -41,17 +42,20 @@ class Category extends Model
         return $this->morphOne(Image::class,'model')->withDefault(); //con el with si obtenemos null nos devuelve una instanca vacia de image
     }
 
+
     //mutators y accessors
 
     public function getImgAttribute(){
         $img = $this->image->file; //amalcenamos file en img temporalmente
         if($img !=null){
             if(file_exists('storage/categories' . $img))
-            return 'storage/categories' . $img;
+            return 'storage/categories/' . $img;
             else
             return 'storage/image-not-found.png'; //cuando no existe imagen
         }
         return 'storage/noimg.jpg'; //cuando no tiene imagen asociado en la bd
     }
+
+
 
 }
