@@ -48,4 +48,15 @@
             </div>
         </div>
     </div>
+    <script>
+    KioskBoard.run('#categoryName', {})
+    const inputCatName = document.getElementById('categoryName')
+     //a la prop publica del componente category, a name le asignamos el valor que hay en la caja de texto name
+    if(inputCatName){
+        inputCatName.addEventListener('change', ()=>{
+          @this.name = e.target.value
+        })
+    }
+    </script>
+
 </div>
