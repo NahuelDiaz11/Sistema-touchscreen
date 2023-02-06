@@ -24,7 +24,7 @@ class CustomerFactory extends Factory
             'province'=>$this->faker->state(),
             'city'=>$this->faker->city(),
             'zipcode'=>$this->faker->postcode(),
-            'pais'=> Str::limit($this->faker->country(),49)
+            'country'=> Str::limit($this->faker->country(),49)
         ];
     }
 }

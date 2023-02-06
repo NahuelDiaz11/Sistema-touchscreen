@@ -22,7 +22,7 @@ return new class extends Migration
             $table->string('province',60)->nullable();
             $table->string('city',60)->nullable();
             $table->string('zipcode',10)->nullable();
-            $table->string('pais',50)->nullable();
+            $table->string('country',50)->nullable();
             $table->text('notes',500)->nullable();
             $table->timestamps();
         });
