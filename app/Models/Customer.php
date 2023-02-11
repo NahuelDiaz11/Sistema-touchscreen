@@ -21,31 +21,31 @@ class Customer extends Model
 
     //se puede acceder a la funcion de manera directa sin tener que instansear la clase
     //le paso el id que se quiere actualizar
-    public function rules($id)
+    public static function rules($id)
     {
         if ($id <= 0) {
             return [
                 'name' => 'required|min:3|string|unique:customers',
                 'phone' => 'nullable|max:10',
-                'stret' => 'nullable|max:100',
+                'street' => 'nullable|max:100',
                 'number' => 'nullable|max:20',
                 'province' => 'nullable|max:60',
                 'city' => 'nullable|max:65',
                 'country' => 'nullable|max:70',
                 'zipcode' => 'nullable|min:5',
-                'note' => 'nullable|max:1000'
+                'notes' => 'nullable|max:1000'
             ];
         } else {
             [
                 'name' => "required|min:3|string|unique:customers, name,{$id}",
                 'phone' => 'nullable|max:10',
-                'stret' => 'nullable|max:100',
+                'street' => 'nullable|max:100',
                 'number' => 'nullable|max:20',
                 'province' => 'nullable|max:60',
                 'city' => 'nullable|max:65',
                 'country' => 'nullable|max:50',
                 'zipcode' => 'nullable|min:5',
-                'note' => 'nullable|max:1000'
+                'notes' => 'nullable|max:1000'
             ];
         }
     }

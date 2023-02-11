@@ -93,6 +93,9 @@ class Customers extends Component
     public function Store()
     {
         $this->validate(Customer::rules($this->selected_id), Customer::$messages);
+
+
+
         Customer::updateOrCreate(
             ['id'=> $this->selected_id],
             [
@@ -100,7 +103,7 @@ class Customers extends Component
                 'phone' => $this->phone,
                 'street' => $this->street,
                 'number' => $this->number,
-                'province' => $this->colony,
+                'province' => $this->province,
                 'city' => $this->city,
                 'zipcode' => $this->zipcode,
                 'country' => $this->country,
