@@ -25,30 +25,36 @@ class Customer extends Model
     {
         if ($id <= 0) {
             return [
-                'name' => 'required|min:3|string|unique:customers',
-                'phone' => 'nullable|max:10',
-                'street' => 'nullable|max:100',
-                'number' => 'nullable|max:20',
-                'province' => 'nullable|max:60',
-                'city' => 'nullable|max:65',
-                'country' => 'nullable|max:70',
-                'zipcode' => 'nullable|min:5',
-                'notes' => 'nullable|max:1000'
-            ];
-        } else {
-            [
-                'name' => "required|min:3|string|unique:customers, name,{$id}",
+                'name' => 'required|min:3|max:50|string|unique:users',
                 'phone' => 'nullable|max:10',
                 'street' => 'nullable|max:100',
                 'number' => 'nullable|max:20',
                 'province' => 'nullable|max:60',
                 'city' => 'nullable|max:65',
                 'country' => 'nullable|max:50',
-                'zipcode' => 'nullable|min:5',
+                'zipcode' => 'nullable|max:5|min:5',
                 'notes' => 'nullable|max:1000'
+
             ];
         }
+
+        else {
+           return [
+                'name' => "required|min:3|max:50|string|unique:users,name,{$id}",
+                'phone' => 'nullable|max:10',
+                'street' => 'nullable|max:100',
+                'number' => 'nullable|max:20',
+                'province' => 'nullable|max:60',
+                'city' => 'nullable|max:65',
+                'country' => 'nullable|max:50',
+                'zipcode' => 'nullable|max:5|min:5',
+                'notes' => 'nullable|max:1000'
+            ];
+
+
+        }
     }
+
 
     public static $messages=[
         'name.required'=> 'Nombre requerido',

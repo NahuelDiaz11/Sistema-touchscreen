@@ -114,7 +114,18 @@ class Customers extends Component
             $this->noty($this->selected_id > 0 ? 'Cliente Actualizado' : 'Cliente Registrado','noty', false, 'close-modal');
             $this->resetUI();
 
+    }
 
+    public function Destroy(Customer $customer)
+    {
+
+        //$orders = $customer->orders->count();
+        if ($customer->orders->count() < 1) {
+            $customer->delete();
+            $this->noty("El cliente <b>$customer->name</b> fué eliminado del sistema");
+        } else {
+            $this->noty("No es posible eliminar el cliente debido a que tiene compras registradas");
+        }
     }
 
 }

@@ -56,10 +56,10 @@
                                                             onclick="destroy('customers', 'Destroy', {{ $customer->id }})">
                                                             <i class="fas fa-trash fa-2x"></i>
                                                         </button>
-
                                                     @endif
 
-                                                    <button class="ms-3 btn btn-warning text-white bg-light border-0 ml-3"
+                                                    <button
+                                                        class="ms-3 btn btn-warning text-white bg-light border-0 ml-3"
                                                         type="button" wire:click.prevent="Edit({{ $customer->id }})">
                                                         <i class="fas fa-edit fa-2x"></i>
                                                     </button>
@@ -97,12 +97,22 @@
     @include('livewire.sales.keyboard')
 
     <script>
-        //sincronizamos propiedad con la caja de busqueda
-        const inputSearch = document.getElementById('search')
-        inputSearch.addEventListener('change', (e) => {
+        //captura cualquier click
+        document.addEventListener('click', (e) => {
+            //verifica que se hizo click en el buscador
+            if (e.target.id == 'search') {
+                //asocia el teclado con el buscador
+                KioskBoard.run('#search', {})
+                //pierde el foco el nuscador
+                document.getElementById('search').blur()
+                //vuelve el foco
+                document.getElementById('search').focus()
 
-            @this.search = e.target.value
-
+                const inputSearch = document.getElementById('search')
+                inputSearch.addEventListener('change', (e) => {
+                    @this.search = e.target.value
+                })
+            }
         })
     </script>
 
