@@ -78,7 +78,7 @@ class Customers extends Component
         $this->phone = $customer->phone;
         $this->street = $customer->street;
         $this->number = $customer->number;
-        $this->province = $customer->colony;
+        $this->province = $customer->province;
         $this->city = $customer->city;
         $this->zipcode = $customer->zipcode;
         $this->country = $customer->country;
@@ -87,7 +87,31 @@ class Customers extends Component
         $this->form = true;
     }
 
+    //escuchamos los eventos
+    public $listeners=['resetUI','Destroy'];
+
+    public function Store()
+    {
+        $this->validate(Customer::rules($this->selected_id), Customer::$messages);
+        Customer::updateOrCreate(
+            ['id'=> $this->selected_id],
+            [
+                'name' => $this->name,
+                'phone' => $this->phone,
+                'street' => $this->street,
+                'number' => $this->number,
+                'province' => $this->colony,
+                'city' => $this->city,
+                'zipcode' => $this->zipcode,
+                'country' => $this->country,
+                'notes' => $this->notes
+            ]
+
+            );
+            $this->noty($this->selected_id > 0 ? 'Cliente Actualizado' : 'Cliente Registrado','noty', false, 'close-modal');
+            $this->resetUI();
 
 
+    }
 
 }
