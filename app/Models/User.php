@@ -43,20 +43,20 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
     ];
 
-    public static function rules()
+    public static function rules($id)
     {
         if($id<=0){
             return[
                 'name' => 'required|min:3|max:50|string|unique:users',
                 'email'=> 'required|email|unique:users',
-                'password'=> 'required|min:3',
+
                 'profile'=>'required|not_in:eleger'
             ];
         }else{
             return[
                 'name' => "required|min:3|max:50|string|unique:users,name,{$id}",
-                'email'=> 'required|email|unique:users',
-                'password'=> 'required|min:3',
+                'email'=> "required|email|unique:users,email,{$id}",
+
                 'profile'=>'required|not_in:eleger'
             ];
         }

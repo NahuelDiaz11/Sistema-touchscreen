@@ -28,17 +28,19 @@
                         </div>
                         <div>
                             <label class="form-label">Contraseña</label>
-                            <input wire:model="password" id="password" type="text" data-kioskboard-type="numpad" class="form-control form-control-lg border-start-0 kioskboard {{($errors->first('password') ? "border-danger" : "")}}" placeholder="..." maxlength="255" />
+                            <input wire:model="password" id="password" type="password" data-kioskboard-type="numpad" class="form-control form-control-lg border-start-0 kioskboard {{($errors->first('password') ? "border-danger" : "")}}" placeholder="..." maxlength="255" />
                             @error('password')
                             <x-alert msg="{{ $message }}" />
                             @enderror
+
+
                         </div>
                     </div>
                 </div>
 
                <div class="grid grid-cols-6">
                 <div class="col-end-2 bg-amber-500">
-                    <label class="form-label">Perfil</label>
+                    <label class="form-label mt-2">Perfil</label>
                     <select wire:model="profile" class="form-select form-select-lg sm:mr-2">
                         <option value="Admin">Administrador</option>
                         <option value="Employee">Empleado</option>
@@ -81,10 +83,11 @@ document.querySelectorAll(".kioskboard").forEach(i => i.addEventListener("change
             case 'password':
                 @this.password = e.target.value
                 break
-          
-
+        }
 
     }))
+
+
     </script>
 
 </div>

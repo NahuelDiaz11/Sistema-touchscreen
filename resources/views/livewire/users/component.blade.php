@@ -2,7 +2,7 @@
     @if (!$form)
         <div class="intro-y col-span-12">
             <div class="intro-y box">
-                <h2 class="text-lg font-medium text-center text-theme-1 py-4">CLIENTES</h2>
+                <h2 class="text-lg font-medium text-center text-theme-1 py-4">USUARIOS</h2>
                 <x-search />
 
                 <div class="p-5">
@@ -14,7 +14,7 @@
                                         <th class="border-b-2 dark:border-dark-5 whitespace-nowrap">NOMBRE</th>
                                         <th class="border-b-2 dark:border-dark-5 whitespace-nowrap">EMAIL</th>
                                         <th class="border-b-2 dark:border-dark-5 whitespace-nowrap">PERFIL</th>
-                                    
+
                                         <th class="border-b-2 dark:border-dark-5 whitespace-nowrap text-center">ACCIONES
                                         </th>
                                     </tr>
@@ -36,7 +36,7 @@
                                             <td class="dark:border-dark-5">
                                                 <h6 class="mb-1 font-medium">{{ $user->profile }}</h6>
                                             </td>
-                                            
+
                                             <td class="dark:border-dark-5 text-center">
                                                 <div class="d-flex justify-content-center">
                                                     {{-- si es menor a 1 no tiene ordenes relacionadas  y puede eliminarse --}}
@@ -87,23 +87,13 @@
     @include('livewire.sales.keyboard')
 
     <script>
-        //captura cualquier click
-        document.addEventListener('click', (e) => {
-            //verifica que se hizo click en el buscador
-            if (e.target.id == 'search') {
-                //asocia el teclado con el buscador
-                KioskBoard.run('#search', {})
-                //pierde el foco el nuscador
-                document.getElementById('search').blur()
-                //vuelve el foco
-                document.getElementById('search').focus()
-
-                const inputSearch = document.getElementById('search')
-                inputSearch.addEventListener('change', (e) => {
-                    @this.search = e.target.value
-                })
-            }
+         const inputSearch = document.getElementById('search')
+        inputSearch.addEventListener('change', (e) => {
+            @this.search = e.target.value;
         })
+
+
+        KioskBoard.run('.kioskboard', {});
     </script>
 
 </div>
