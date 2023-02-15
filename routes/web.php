@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Livewire\Categories;
+use App\Http\Livewire\Sales;
 use App\Http\Livewire\Users;
 use App\Http\Livewire\Products;
 use App\Http\Controllers\ProfileController;
@@ -22,6 +23,7 @@ Route::get('categories', Categories::class)->name('categories');
 Route::get('products', Products::class)->name('products');
 Route::get('customers', Customers::class)->name('customers');
 Route::get('users', Users::class)->name('users');
+Route::get('sales', Sales::class)->name('sales');
 
 Route::get('/', function () {
     return view('auth.login');

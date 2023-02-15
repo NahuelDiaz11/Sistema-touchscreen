@@ -65,15 +65,15 @@ class Cart
         $this->removeProduct($id);
         $this->addProduct($newItem);
     }
-    // public function removeChanges($id)
-    // {
-    //     $mycart = $this->getContent();
-    //     $oldItem = $mycart->where('id', $id)->first();
-    //     $newItem = $oldItem;
-    //     $newItem->changes = '';
-    //     $this->removeProduct($id);
-    //     $this->addProduct($newItem);
-    // }
+    public function removeChanges($id)
+    {
+        $mycart = $this->getContent();
+        $oldItem = $mycart->where('id', $id)->first();
+        $newItem = $oldItem;
+        $newItem->changes = '';
+        $this->removeProduct($id);
+        $this->addProduct($newItem);
+    }
 
 
 
@@ -134,7 +134,7 @@ class Cart
 
 
 
-    // eliminar producto del carrito
+    // elimina producto del carrito
     public function removeProduct(int $id): void
     {
         $this->cart = $this->cart->reject(function (Product $product) use ($id) {
@@ -143,7 +143,7 @@ class Cart
         $this->save();
     }
 
-    // obtenemos total en carrito
+    // obtiene total en carrito
     public function totalAmount()
     {
 
@@ -155,17 +155,18 @@ class Cart
 
 
 
-    // obtenemos el cantidad de productos en carrito
+    // obtiene el cantidad de filas en carrito
     public function hasProducts(): int
     {
         return $this->cart->count();
     }
 
-    // obtenemos sumatoria de productos en carrito
+    // obtiene sumatoria de productos en carrito
     public function totalItems(): int
     {
 
         $items = $this->cart->sum(function ($product) {
+            //suma la cantidad de las filas
             return $product->qty;
         });
         return $items;
@@ -180,7 +181,7 @@ class Cart
 
 
 
-    // validación antes de agregar item al carrito
+    // validacion antes de agregar item al carrito
     protected function validate($item)
     {
         $validator = Validator::make($item->toArray(), [
