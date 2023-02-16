@@ -58,6 +58,11 @@ Iniciar el server
 ```
 ##### ** te recomiendo usar laragon **
 
+usar usuario para prueba:
+```bash
+    user: prueba@gmail.com
+    pass: 123456
+```
 ## Screenshots
 
 [![Captura-desde-2023-02-15-09-39-00.png](https://i.postimg.cc/sgbhcFw2/Captura-desde-2023-02-15-09-39-00.png)](https://postimg.cc/sM9xjLFF)
