@@ -2,6 +2,7 @@
 
 namespace App\Traits;
 use App\Services\Cart;
+use App\Models\Product;
 
 trait CartTrait {
 
@@ -9,7 +10,7 @@ trait CartTrait {
     {
        $cart=new Cart;
        //ordena por el nombre
-       return $cart->getContent()->sortBy('name')
+       return $cart->getContent()->sortBy('name');
     }
 
     public function getTotalCart()
@@ -18,7 +19,7 @@ trait CartTrait {
        return $cart->totalAmount();
     }
 
-    public function contInCart($id)
+    public function countInCart($id)
     {
         $cart = new Cart;
        return $cart->countInCart($id);
@@ -37,7 +38,7 @@ trait CartTrait {
         $this->noty('CANTIDAD ACTUALIZADA');
     }
 
-    public function addProductCart($product, $cant=1, $changes='')
+    public function addProductToCart($product, $cant=1, $changes='')
     {
         $cart = new Cart;
         if($cart->existsInCart($product->id)){
@@ -56,7 +57,7 @@ trait CartTrait {
         
     }
     //remplaza la cantidad del carrito
-    public function replaceQuantityCart($id, $cant=1)
+    public function replaceQuantyCart($id, $cant=1)
     {
                $cart = new Cart;
                $cart->replaceQuantity($id,$cant);
