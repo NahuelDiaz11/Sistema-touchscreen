@@ -58,6 +58,11 @@ class Sales extends Component
                 ])->layout('layouts.theme.app');
     }
 
+    public function resetUI()
+    {
+        $this->reset('tabProducts', 'cash', 'showListProducts', 'tabCategories', 'search', 'searchcustomer', 'customer_id', 'customerSelected', 'totalCart', 'itemsCart', 'productIdSelected', 'productChangesSelected', 'productNameSelected', 'changesProduct');
+    }
+
     // dice cual tab se activa
     public function setTabActive($tabName)
     {
@@ -79,8 +84,9 @@ class Sales extends Component
     public function getProductsByCategory($category_id)
     {
         $this->showListProducts = true;
-        $this->productsList = Product::where('category_id', $category_id)->where('stock', '>', 0)->get(); // *
+        $this->productsList = Product::where('category_id', $category_id)->where('stock', '>', 0)->get(); 
     }
+
 
     // operaciones con el carrito
     public function add2Cart(Product $product)
@@ -160,9 +166,9 @@ class Sales extends Component
             if ($this->customerSelected != 'Seleccionar Cliente') {
                 $this->customer_id = Customer::where('name', $this->customerSelected)->first()->id;
             } else {
-                 $this->customer_id = Customer::where('name', 'Mostrador')->first()->id;
+                $this->customer_id = Customer::where('name', 'Mostrador')->first()->id;
             }
-
+            
 
             $sale = Order::create([
                 'total' => $this->getTotalCart(),
@@ -199,7 +205,7 @@ class Sales extends Component
             $this->clearCart();
             $this->resetUI();
 
-            //si se hizo click en el botón imprimir
+            //si se hizo click en el botó=on imprimir
             if($print) $this->PrintTicket($sale->id);
 
             $this->noty('Venta Registrada con Éxito');
@@ -208,6 +214,17 @@ class Sales extends Component
             DB::rollback();
             $this->not('Error al guardar el pedido: ' . $e->getMessage(), 'noty', 'error');
         }
+    }
+
+    
+
+    public $listeners = ['cancelSale'];
+
+    public function cancelSale()
+    {
+        $this->clearCart();
+        $this->resetUI();
+        $this->noty('VENTA CANCELADA');
     }
 
 

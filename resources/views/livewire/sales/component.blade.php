@@ -62,12 +62,15 @@
                                                             class="form-control text-center kioskboard"
                                                             id="r{{ $item->id }}">
                                                         <div wire:click="updateQty({{ $item->id }}, document.getElementById('r'+ {{ $item->id }} ).value )"
-                                                            class="input-group-text">
+                                                            class="input-group-text {{ $item->livestock > 0 ? '' : 'hidden' }}">
                                                             <i class="fas fa-redo fa-lg"></i>
                                                         </div>
                                                     </div>
-                                                    <div><small
-                                                            class="text-xs text-theme-1">{{ $item->livestock }}</small>
+                                                   
+                                                    <div>
+                                                        <small
+                                                            class="text-xs text-theme-1">{{ $item->livestock }}
+                                                        </small>
                                                     </div>
                                                 </td>
                                                 <td class="border-b dark:border-dark-5 text-center">
@@ -184,17 +187,16 @@
                 <h1>Ingresar el Efectivo</h1>
             </div>
             <div class="mt-8">
-               
-                    <button wire:loading.attr="disabled" wire:click.prevent="storeSale"
-                        class="btn btn-primary w-full">
-                        <i class="fas fa-database mr-2"></i> Guardar Venta</button>
-                    <button wire:loading.attr="disabled" wire:click.prevent="storeSale(true)"
-                        class="btn btn-outline-primary w-full mt-2"><i class="fas fa-receipt mr-2">
-                        </i> Guardar e Imprimir</button>
-                
+                @if ($totalCart > 0 && $cash >= $totalCart)
+                    <button wire:loading.attr="disabled" wire:target="storeSale" wire:click.prevent="storeSale"
+                        class="btn btn-primary w-full"><i class="fas fa-database mr-2"></i> Guardar Venta</button>
+                    <button wire:loading.attr="disabled" wire:target="storeSale" wire:click.prevent="storeSale(true)"
+                        class="btn btn-outline-primary w-full mt-5"><i class="fas fa-receipt mr-2"></i> Guardar e
+                        Imprimir</button>
+                @endif
 
                 @if ($totalCart > 0)
-                    <button onclick="Cancel()" class="btn btn-danger w-full mt-2">
+                    <button onclick="Cancel()" class="btn btn-danger w-full mt-5">
                         <i class="fas fa-trash mr-2"> </i>
                         Cancelar Venta</button>
                 @endif
