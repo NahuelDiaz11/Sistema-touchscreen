@@ -1,71 +1,76 @@
 <!DOCTYPE html>
 
 <html lang="en" class="light">
-    <!-- BEGIN: Head -->
-    <head>
-        <meta charset="utf-8">
-        <link href="{{ asset('dist/images/logo.svg')}}" rel="shortcut icon">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-        <meta name="description" content="Sistema de ventas web touchscreen">
-        <meta name="keywords" content="ventas,web,movil,tactil,registros,comida,kioscos,restaurant">
-        <meta name="author" content="NahuelDiaz">
-        <title>Sistema de Ventas Web - Tactil</title>
-        <!-- BEGIN: CSS Assets-->
-        <link rel="stylesheet" href="{{ asset('dist/css/app.css')}}" />
-        <link rel="stylesheet" href="{{ asset('css/all.css')}}" />
-        <link rel="stylesheet" href="{{ asset('css/snackbar.min.css')}}" />
-        <script src="{{ asset ('js/kioskboard.js')}}"></script>
-        <!-- END: CSS Assets-->
+<!-- BEGIN: Head -->
 
-        <style>
-            .image-fit>img{
-                object-fit: containt!important;
-            }
+<head>
+    <meta charset="utf-8">
+    <link href="{{ asset('dist/images/logo.svg') }}" rel="shortcut icon">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="Sistema de ventas web touchscreen">
+    <meta name="keywords" content="ventas,web,movil,tactil,registros,comida,kioscos,restaurant">
+    <meta name="author" content="NahuelDiaz">
+    <title>Sistema de Ventas Web - Tactil</title>
+    <!-- BEGIN: CSS Assets-->
+    <link rel="stylesheet" href="{{ asset('dist/css/app.css') }}" />
+    <link rel="stylesheet" href="{{ asset('css/all.css') }}" />
+    <link rel="stylesheet" href="{{ asset('css/snackbar.min.css') }}" />
+    <script src="{{ asset('js/kioskboard.js') }}"></script>
 
-        /* estilos para parrafos  */
-        nav p{
-            display: none !important;
+    <link href="https://cdn.jsdelivr.net/npm/mc-datepicker/dist/mc-calendar.min.css" rel="stylesheet" />
+
+    <script src="https://cdn.jsdelivr.net/npm/mc-datepicker/dist/mc-calendar.min.js"></script>
+    <!-- END: CSS Assets-->
+
+    <style>
+        .image-fit>img {
+            object-fit: containt !important;
         }
 
-        </style>
+        /* estilos para parrafos  */
+        nav p {
+            display: none !important;
+        }
+    </style>
 
-        @livewireStyles
+    @livewireStyles
 
 
-    </head>
-    <!-- END: Head -->
+</head>
+<!-- END: Head -->
 
 
-    <body class="main">
-        <!-- BEGIN: Mobile Menu -->
-        @include('layouts.theme.mobile-menu')
-        <!-- END: Mobile Menu -->
-        <div class="flex">
-            <!-- BEGIN: Side Menu -->
-            @include('layouts.theme.sidebar')
-            <!-- END: Side Menu -->
-            <!-- BEGIN: Content -->
-            <div class="content">
-                <!-- BEGIN: Top Bar -->
-                @include('layouts.theme.topbar')
-                <!-- END: Top Bar -->
+<body class="main">
+    <!-- BEGIN: Mobile Menu -->
+    @include('layouts.theme.mobile-menu')
+    <!-- END: Mobile Menu -->
+    <div class="flex">
+        <!-- BEGIN: Side Menu -->
+        @include('layouts.theme.sidebar')
+        <!-- END: Side Menu -->
+        <!-- BEGIN: Content -->
+        <div class="content">
+            <!-- BEGIN: Top Bar -->
+            @include('layouts.theme.topbar')
+            <!-- END: Top Bar -->
 
-              {{$slot}}
+            {{ $slot }}
 
-            </div>
-            <!-- END: Content -->
         </div>
-        <!-- BEGIN: Dark Mode Switcher-->
-        {{-- <div data-url="side-menu-dark-dashboard-overview-1.html" class="dark-mode-switcher cursor-pointer shadow-md fixed bottom-0 right-0 box dark:bg-dark-2 border rounded-full w-40 h-12 flex items-center justify-center z-50 mb-10 mr-10">
+        <!-- END: Content -->
+    </div>
+    <!-- BEGIN: Dark Mode Switcher-->
+    {{-- <div data-url="side-menu-dark-dashboard-overview-1.html" class="dark-mode-switcher cursor-pointer shadow-md fixed bottom-0 right-0 box dark:bg-dark-2 border rounded-full w-40 h-12 flex items-center justify-center z-50 mb-10 mr-10">
             <div class="mr-4 text-gray-700 dark:text-gray-300">Dark Mode</div>
             <div class="dark-mode-switcher__toggle border"></div>
         </div> --}}
-        <!-- END: Dark Mode Switcher-->
-        <!-- BEGIN: JS Assets-->
-        @include('layouts.theme.footer')
-        <!-- END: JS Assets-->
+    <!-- END: Dark Mode Switcher-->
+    <!-- BEGIN: JS Assets-->
+    @include('layouts.theme.footer')
+    <!-- END: JS Assets-->
 
-        @livewireScripts
+    @livewireScripts
 
-    </body>
+</body>
+
 </html>
