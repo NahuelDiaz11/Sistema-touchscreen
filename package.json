@@ -16,6 +16,7 @@
         "vite": "^4.0.0"
     },
     "dependencies": {
+        "apexcharts": "^3.37.1",
         "mc-datepicker": "^0.6.5"
     }
 }

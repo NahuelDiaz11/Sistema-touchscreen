@@ -20,6 +20,11 @@
     <link href="https://cdn.jsdelivr.net/npm/mc-datepicker/dist/mc-calendar.min.css" rel="stylesheet" />
 
     <script src="https://cdn.jsdelivr.net/npm/mc-datepicker/dist/mc-calendar.min.js"></script>
+
+    <link rel="stylesheet" href="{{ asset('css/apexcharts.css') }}" />
+    <script src="{{ asset('js/apexcharts.js') }}"></script>
+
+ 
     <!-- END: CSS Assets-->
 
     <style>
@@ -35,7 +40,7 @@
 
     @livewireStyles
 
-
+   
 </head>
 <!-- END: Head -->
 

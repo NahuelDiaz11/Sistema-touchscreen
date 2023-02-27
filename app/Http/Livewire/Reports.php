@@ -2,16 +2,17 @@
 
 namespace App\Http\Livewire;
 
-// use App\Traits\PrinterTrait;
+
 use Carbon\Carbon;
 use App\Models\Order;
 use Livewire\Component;
 use Livewire\WithPagination;
 use App\Models\User;
+use App\Traits\PrinterTrait;
 
 class Reports extends Component
 {
-    // use PrinterTrait;
+    use PrinterTrait;
     use WithPagination;
 
     public $search, $startDate, $endDate, $userId = 'TODOS', $details =[];
@@ -87,11 +88,11 @@ class Reports extends Component
     }
 
 
-    // public function rePrint($orderId)
-    // {
-    //     $this->PrintTicket($orderId);
-    //     $this->dispatchBrowserEvent('noty',['msg' => 'Se envió a reimprimir el ticket de Venta','type' => 'success']);
-    // }
+    public function rePrint($orderId)
+    {
+        $this->PrintTicket($orderId);
+        $this->dispatchBrowserEvent('noty',['msg' => 'Se envió a reimprimir el ticket de Venta','type' => 'success']);
+    }
     
     
 }

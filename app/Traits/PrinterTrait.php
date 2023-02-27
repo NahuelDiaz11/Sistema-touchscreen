@@ -13,6 +13,7 @@ use Mike42\Escpos\PrintConnectors\WindowsPrintConnector;
 use App\Models\Config;
 use Mike42\Escpos\CapabilityProfile;
 
+
 trait PrinterTrait
 {
 

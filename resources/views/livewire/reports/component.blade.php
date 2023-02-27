@@ -102,7 +102,7 @@
     </div>
    
     @include('livewire.reports.detail')
-    {{-- @include('livewire.reports.modal-users') --}}
+    @include('livewire.reports.modal-users')
     @include('livewire.sales.keyboard')
 
 
@@ -136,6 +136,7 @@ document.querySelectorAll('.mydp').forEach( function (el) {
       ]
   })
 
+  //permite que se sincronicen los valores con las propiedades del backend
     myDatePicker.onSelect((date, formatedDate) => {
         if(myDatePicker.el == '#f1')
            @this.startDate = formatedDate;
