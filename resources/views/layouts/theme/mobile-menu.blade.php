@@ -17,26 +17,26 @@
             </a>
         </li>
         <li>
-            <a href="#" class="menu">
+            <a href="{{route('products')}}" class="menu">
                 <div class="menu__icon"> <i data-feather="coffee"></i> </div>
                 <div class="menu__title"> Productos </div>
             </a>
         </li>
         <li>
-            <a href="#" class="menu">
+            <a href="{{route('sales')}}" class="menu">
                 <div class="menu__icon"> <i data-feather="shopping-cart"></i> </div>
                 <div class="menu__title"> Ventas </div>
             </a>
         </li>
         <div class="side-nav__devider my-6"></div>
         <li>
-            <a href="#" class="menu">
+            <a href="{{route('customers')}}" class="menu">
                 <div class="menu__icon"> <i data-feather="users"></i> </div>
                 <div class="menu__title"> Clientes </div>
             </a>
         </li>
         <li>
-            <a href="#" class="menu">
+            <a href="{{route('users')}}" class="menu">
                 <div class="menu__icon"> <i data-feather="key"></i> </div>
                 <div class="menu__title"> Usuarios </div>
             </a>
