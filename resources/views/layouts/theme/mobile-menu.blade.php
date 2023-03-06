@@ -11,7 +11,7 @@
 
 
         <li>
-            <a href="" class="menu">
+            <a href="{{route('categories')}}" class="menu">
                 <div class="menu__icon"> <i data-feather="layers"></i> </div>
                 <div class="menu__title"> Categorias </div>
             </a>
