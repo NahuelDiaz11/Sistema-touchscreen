@@ -1,7 +1,7 @@
 <nav class="side-nav">
     <a href="" class="intro-x flex items-center pl-5 pt-4">
         <img alt="Logo" class="w-6" src="{{ asset('dist/images/logo.svg') }}">
-        <span class="hidden xl:block text-white text-lg ml-3"> fast<span class="font-medium">food</span> </span>
+        <span class="hidden xl:block text-white text-lg ml-3"> Kios<span class="font-medium">co</span> </span>
     </a>
     <div class="side-nav__devider my-6"></div>
 
