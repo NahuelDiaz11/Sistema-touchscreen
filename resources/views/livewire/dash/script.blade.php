@@ -1,7 +1,7 @@
 <script>
     document.addEventListener('livewire:load', function() {
 
-        
+
         //-------------------------------------------------------------------------------------//
         //                        TOP 5 PRODUCTOS
         // ------------------------------------------------------------------------------------//
@@ -39,9 +39,97 @@
         var chartTop = new ApexCharts(document.querySelector("#chartTop5"), optionsTop);
         chartTop.render();
 
-         
+
        //-------------------------------------------------------------------------------------//
-        //                                  WEEK SALES
+        //                        SALES BY MONTH
+        // ------------------------------------------------------------------------------------//
+        var optionsMonth = {
+            series: [{
+                name: 'Ventas del mes',
+                data: @this.salesByMonth_Data
+            }],
+            chart: {
+                height: 350,
+                type: 'bar',
+            },
+            plotOptions: {
+                bar: {
+                    borderRadius: 10,
+                    dataLabels: {
+                        position: 'top',
+                    },
+                }
+            },
+            dataLabels: {
+                enabled: true,
+                formatter: function(val) {
+                    return '$' + val;
+                },
+                offsetY: -20,
+                style: {
+                    fontSize: '12px',
+                    colors: ["#304758"]
+                }
+            },
+
+            xaxis: {
+                categories: ["Ene", "Feb", "Mar", "Abr", "May", "Jun", "Jul", "Ago", "Sep", "Oct", "Nov", "Dic"],
+                position: 'top',
+                axisBorder: {
+                    show: false
+                },
+                axisTicks: {
+                    show: false
+                },
+                crosshairs: {
+                    fill: {
+                        type: 'gradient',
+                        gradient: {
+                            colorFrom: '#D8E3F0',
+                            colorTo: '#BED1E6',
+                            stops: [0, 100],
+                            opacityFrom: 0.4,
+                            opacityTo: 0.5,
+                        }
+                    }
+                },
+                tooltip: {
+                    enabled: true,
+                }
+            },
+            yaxis: {
+                axisBorder: {
+                    show: false
+                },
+                axisTicks: {
+                    show: false,
+                },
+                labels: {
+                    show: false,
+                    formatter: function(val) {
+                        return '$' + val;
+                    }
+                }
+
+            },
+            title: {
+                text: totalYearSales(),
+                floating: true,
+                offsetY: 330,
+                align: 'center',
+                style: {
+                    color: '#444'
+                }
+            }
+        };
+
+        var chartMonth = new ApexCharts(document.querySelector("#chartMonth"), optionsMonth);
+        chartMonth.render();
+
+
+
+         //-------------------------------------------------------------------------------------//
+        //                                  VENTAS DEL MES
         // ------------------------------------------------------------------------------------//
         var optionsArea = {
             chart: {
@@ -94,7 +182,52 @@
 
         chartArea.render();
 
-        
+
+
+        // ESCUCHAR EVENTO CHANGE DEL AÑO SELACCIONADO PARA ACTUALIZAR GRAFICOS
+        window.addEventListener('reload-script', event => {
+
+
+            // actualizar data gráfico semanal
+            chartArea.updateSeries([{
+                data: @this.weekSales_Data
+            }])
+
+            // actualizar data grafico mensual
+            chartMonth.updateSeries([{
+                data: @this.salesByMonth_Data
+            }])
+            chartMonth.updateOptions({
+                title: {
+                    text: totalYearSales()
+                }
+            })
+
+
+            // actualizar data gráfico 5 mas vendidos
+            var newData = [
+                parseFloat(@this.top5Data[0]['total']),
+                parseFloat(@this.top5Data[1]['total']),
+                parseFloat(@this.top5Data[2]['total']),
+                parseFloat(@this.top5Data[3]['total']),
+                parseFloat(@this.top5Data[4]['total'])
+            ]
+            chartTop.updateSeries(newData)
+
+
+        })
+
+
+        function totalYearSales() {
+            var total = 0
+            @this.salesByMonth_Data.forEach(item => {
+                total += parseFloat(item)
+            });
+
+            return 'Total: $' + total.toFixed(2)
+        }
 
     })
+
+
 </script>
