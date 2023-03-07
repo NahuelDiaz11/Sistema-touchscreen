@@ -12,7 +12,7 @@
                 <div class="row">
                     <div class="col-sm-12">
                         <b>Agregar Cambios</b>
-                        <textarea id="changesProduct" cols="30" rows="10" class="form-control kioskboard"></textarea>
+                        <textarea id="changesProduct" cols="30" rows="10" class="form-control"></textarea>
                     </div>
                 </div>
             </div>

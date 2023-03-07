@@ -11,7 +11,7 @@
                 <div class="w-full sm:w-auto mt-3 sm:mt-0 sm:ml-auto md:ml-0">
                     <div class="w-56 relative text-gray-700 dark:text-gray-300">
                         <input wire:model="search" id="search" type="text"
-                            class="form-control w-56 box pr-10 placeholder-theme-13 kioskboard" placeholder="Buscar...">
+                            class="form-control w-56 box pr-10 placeholder-theme-13 " placeholder="Buscar...">
                         <i class="w-4 h-4 absolute my-auto inset-y-0 mr-3 right-0 fas fa-search"></i>
                     </div>
                 </div>
@@ -102,7 +102,7 @@
     @include('livewire.products.panel')
 
 
-    @include('livewire.sales.keyboard')
+
 
     <script>
         //sincronizamos propiedad con la caja de busqueda
@@ -148,44 +148,11 @@
 
 
 
-        // el teclado esta disponible para todos los elementos de la ventana modal que tengan la clase kioskboard
-        Kioskboard.run('.kioskboard', {});
-    </script>
-
-
-    <script>
-        document.querySelectorAll(".kioskboard").forEach(i => i.addEventListener("change", e => {
-
-
-            switch (e.currentTarget.id) {
-                case 'name':
-                        @this.name = e.target.value
-                        break
-                    case 'cost':
-                        @this.cost = e.target.value
-                        break
-                    case 'code':
-                        @this.code = e.target.value
-                        break
-                    case 'price':
-                        @this.price = e.target.value
-                        break
-                    case 'price2':
-                        @this.price2 = e.target.value
-                        break
-                    case 'stock':
-                        @this.stock = e.target.value
-                        break
-                    case 'minstock':
-                        @this.minstock = e.target.value
-                        break
-                    default:
-
-            }
-        }))
-
 
     </script>
+
+
+
 
 
 

@@ -8,16 +8,15 @@
 
         <div class="p-5">
             <div class="preview">
-                {{-- apenas abre el formulario se abre el teclado virtual con alpine, con el nombre first que esta en la caja de texto --}}
-                <div x-data="{}" x-init="setTimeout(() => { $refs.first.focus() }, 900)">
+
                     <label  class="form-label">Nombre</label>
                     <input wire:model="name" x-ref="first" id="categoryName" type="text"
-                    class="form-control  kioskboard {{($errors->first('name') ? "border-theme-6" : "")}}"
+                    class="form-control {{($errors->first('name') ? "border-theme-6" : "")}}"
                     placeholder="ingresa la descripción" />
                     @error('name')
                     <x-alert msg="{{ $message }}" />
                     @enderror
-                </div>
+
                 <div class="mt-3">
                     <label class="form-label">Imagen</label>
                     {{-- aceptamos imagenes png, jpeg y jpg --}}
@@ -43,16 +42,6 @@
             </div>
         </div>
     </div>
-    <script>
-    KioskBoard.run('#categoryName', {})
-    const inputCatName = document.getElementById('categoryName')
-     //a la prop publica del componente category, a name le asignamos el valor que hay en la caja de texto name
-    if(inputCatName){
-        inputCatName.addEventListener('change', (e)=>{
-          @this.name = e.target.value;
-        })
-    }
-    </script>
 
 
 </div>

@@ -14,10 +14,10 @@
                         <div class="p-5" id="striped-rows-table">
                             <div class="preview">
                                 <div class="overflow-x-auto">
-                                   
+
                                     <div class="input-group">
                                         <div id="input-group-3" class="input-group-text"><i class="fas fa-search"></i></div>
-                                        <input wire:model="searchcustomer" id="customer-search" type="text" class="form-control form-control-lg kioskboard" placeholder="Buscar" >
+                                        <input wire:model="searchcustomer" id="customer-search" type="text" class="form-control form-control-lg" placeholder="Buscar" >
                                     </div>
 
 
@@ -48,7 +48,7 @@
 
                                 </div>
                             </div>
-                            
+
                         </div>
                     </div>
                 </div>

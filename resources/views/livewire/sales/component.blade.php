@@ -57,16 +57,16 @@
                                                     <div class="input-group mt-2">
                                                         <input
                                                             wire:keydown.enter="updateQty({{ $item->id }}, $event.target.value )"
-                                                            value="{{ $item->qty }}" data-kioskboard-type="numpad"
+                                                            value="{{ $item->qty }}"
                                                             data-type="qty" type="text"
-                                                            class="form-control text-center kioskboard"
+                                                            class="form-control text-center"
                                                             id="r{{ $item->id }}">
                                                         <div wire:click="updateQty({{ $item->id }}, document.getElementById('r'+ {{ $item->id }} ).value )"
                                                             class="input-group-text {{ $item->livestock > 0 ? '' : 'hidden' }}">
                                                             <i class="fas fa-redo fa-lg"></i>
                                                         </div>
                                                     </div>
-                                                   
+
                                                     <div>
                                                         <small
                                                             class="text-xs text-theme-1">{{ $item->livestock }}
@@ -182,7 +182,7 @@
                 <div class="input-group">
                     <div id="input-group-3" class="input-group-text"><i class="fas fa-dollar-sign fa-2x"></i></div>
                     <input wire:model="cash" id="cash" type="number"
-                        class="form-control form-control-lg kioskboard" placeholder="0.00">
+                        class="form-control form-control-lg" placeholder="0.00">
                 </div>
                 <h1>Ingresar el Efectivo</h1>
             </div>
@@ -212,7 +212,7 @@
 
 
 
-    @include('livewire.sales.keyboard')
+
 
 
 </div>

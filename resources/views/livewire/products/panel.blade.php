@@ -21,7 +21,7 @@
                     <div class="input-group">
                         <div class="input-group-text">Nombre</div>
                         <input type="text" wire:model="name" id="name"
-                            class="form-control form-control-lg kioskboard" placeholder="ej: Cerveza">
+                            class="form-control form-control-lg " placeholder="ej: Cerveza">
                     </div>
                     @error('name')
                         <x-alert msg="{{ $message }}" />
@@ -34,13 +34,13 @@
                         <div class="input-group">
                             <div class="input-group-text">Costo</div>
                             <input type="number" id="cost" wire:model="cost"
-                                class="form-control form-control-lg kioskboard" data-kioskboard-type="numpad"
+                                class="form-control form-control-lg "
                                 placeholder="ej: 100.00">
                         </div>
                         <div class="input-group">
                             <div class="input-group-text">Codigo</div>
                             <input type="text" id="code" wire:model="code"
-                                class="form-control form-control-lg kioskboard" placeholder="ej: 750100">
+                                class="form-control form-control-lg " placeholder="ej: 750100">
                         </div>
                         @error('cost')
                             <x-alert msg="{{ $message }}" />
@@ -56,7 +56,7 @@
                     <div class="input-group">
                         <div class="input-group-text">Precio1</div>
                         <input type="number" id="price" wire:model="price"
-                            class="form-control form-control-lg kioskboard" data-kioskboard-type="numbpad"
+                            class="form-control form-control-lg "
                             placeholder="ej: 500">
                     </div>
                     @error('price')
@@ -68,7 +68,7 @@
                     <div class="input-group">
                         <div class="input-group-text">Precio2</div>
                         <input type="number" id="price2" wire:model="price2"
-                            class="form-control form-control-lg kioskboard" data-kioskboard-type="numbpad"
+                            class="form-control form-control-lg "
                             placeholder="ej: 500">
                     </div>
                     @error('price2')
@@ -83,13 +83,13 @@
                         <div class="input-group">
                             <div class="input-group-text">Stock</div>
                             <input type="number" id="stock" wire:model="stock"
-                                class="form-control form-control-lg kioskboard" data-kioskboard-type="numpad"
+                                class="form-control form-control-lg "
                                 placeholder="ej: 100">
                         </div>
                         <div class="input-group">
                             <div class="input-group-text">Stock Minimo</div>
                             <input type="text" id="minstock" wire:model="minstock"
-                                class="form-control form-control-lg kioskboard" placeholder="ej: 10">
+                                class="form-control form-control-lg " placeholder="ej: 10">
                         </div>
                         @error('stock')
                             <x-alert msg="{{ $message }}" />

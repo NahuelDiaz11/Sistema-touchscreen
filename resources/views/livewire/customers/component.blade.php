@@ -94,26 +94,8 @@
         @include('livewire.customers.form')
 
     @endif
-    @include('livewire.sales.keyboard')
 
-    <script>
-        //captura cualquier click
-        document.addEventListener('click', (e) => {
-            //verifica que se hizo click en el buscador
-            if (e.target.id == 'search') {
-                //asocia el teclado con el buscador
-                KioskBoard.run('#search', {})
-                //pierde el foco el nuscador
-                document.getElementById('search').blur()
-                //vuelve el foco
-                document.getElementById('search').focus()
 
-                const inputSearch = document.getElementById('search')
-                inputSearch.addEventListener('change', (e) => {
-                    @this.search = e.target.value
-                })
-            }
-        })
-    </script>
+
 
 </div>

@@ -1,5 +1,5 @@
 <script>
-	
+
     function Cancel() {
 		swal({
 			title: '¿DESEAS CANCELAR LA VENTA?',
@@ -35,7 +35,7 @@
 	function closeModal() {
 		var modal = document.getElementById("modalChanges")
 		modal.classList.remove("overflow-y-auto", "show")
-		modal.style.cssText = ""             
+		modal.style.cssText = ""
 	}
 
 	function openModalCustomer() {
