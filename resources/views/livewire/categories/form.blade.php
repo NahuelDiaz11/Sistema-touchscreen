@@ -10,24 +10,19 @@
             <div class="preview">
                 {{-- apenas abre el formulario se abre el teclado virtual con alpine, con el nombre first que esta en la caja de texto --}}
                 <div x-data="{}" x-init="setTimeout(() => { $refs.first.focus() }, 900)">
-                    <label class="form-label">Nombre</label>
-                    {{-- en el caso que no este completo con la propiedad border theme pinta de rojo el input --}}
-                    <input type="text" wire:model="name" x-ref="first" id="categoryName"
-                        class="form-control kioskboard {{ $errors->first('name') ? 'border-theme-6' : '' }}"
-                        placeholder="ingresa la descripcion">
-
+                    <label  class="form-label">Nombre</label>
+                    <input wire:model="name" x-ref="first" id="categoryName" type="text"
+                    class="form-control  kioskboard {{($errors->first('name') ? "border-theme-6" : "")}}"
+                    placeholder="ingresa la descripción" />
                     @error('name')
-
-                        <x-alert>
-                        {{$message}}
-                        </x-alert>
+                    <x-alert msg="{{ $message }}" />
                     @enderror
                 </div>
                 <div class="mt-3">
                     <label class="form-label">Imagen</label>
                     {{-- aceptamos imagenes png, jpeg y jpg --}}
-                    <input type="file" wire:model="photo" accept="image/x-png,image/jpeg,image/jpg"
-                        class="form-control">
+                    <label  class="form-label">Imágen</label>
+                    <input wire:model="photo" accept="image/x-png,image/jpeg,image/jpg" class="form-control" type="file">
                 </div>
 
                 {{-- cuando el user selecciona una img la podemos previsualizar --}}
@@ -53,10 +48,11 @@
     const inputCatName = document.getElementById('categoryName')
      //a la prop publica del componente category, a name le asignamos el valor que hay en la caja de texto name
     if(inputCatName){
-        inputCatName.addEventListener('change', ()=>{
-          @this.name = e.target.value
+        inputCatName.addEventListener('change', (e)=>{
+          @this.name = e.target.value;
         })
     }
     </script>
+
 
 </div>
