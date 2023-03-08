@@ -17,7 +17,7 @@
                                    
                                     <div class="input-group">
                                         <div id="input-group-3" class="input-group-text"><i class="fas fa-search"></i></div>
-                                        <input wire:model="search" id="user-search" type="text" class="form-control form-control-lg kioskboard" placeholder="Buscar" >
+                                        <input wire:model="search" id="user-search" type="text" class="form-control form-control-lg" placeholder="Buscar" >
                                     </div>
 
 
