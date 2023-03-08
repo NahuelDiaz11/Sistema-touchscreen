@@ -5,6 +5,7 @@ namespace App\Traits;
 use App\Models\Branch;
 use Carbon\Carbon;
 use App\Models\Order;
+use App\Models\Setting;
 use App\Models\Customer;
 use Mike42\Escpos\Printer;
 use Mike42\Escpos\EscposImage;

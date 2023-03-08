@@ -7,6 +7,7 @@ use App\Models\Customer;
 use App\Models\Category;
 use App\Models\Product;
 use App\Models\Order;
+use App\Traits\PrinterTrait;
 use App\Models\OrderDetail;
 use DB;
 use Livewire\Component;
@@ -17,7 +18,7 @@ class Sales extends Component
 {
     use WithPagination;
     use CartTrait;
-
+    use PrinterTrait;
 
 
     // propiedades
@@ -150,7 +151,7 @@ class Sales extends Component
         $this->dispatchBrowserEvent('close-customer-modal');
     }
 
-    // SAVE SALE //
+    // GUARDAR VENTA //
     public function storeSale($print = false)
     {
         if ($this->getTotalCart() <= 0) {
@@ -193,7 +194,7 @@ class Sales extends Component
                         'changes' => $item->changes
                     ]);
 
-                    //update stock
+                    //actualiza stock
                     $product = Product::find($item->id);
                     $product->stock = $product->stock - $item->qty;
                     $product->save();
