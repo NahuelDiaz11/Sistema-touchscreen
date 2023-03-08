@@ -205,7 +205,7 @@ class Sales extends Component
             $this->clearCart();
             $this->resetUI();
 
-            //si se hizo click en el botó=on imprimir
+            //si se hizo click en el boton imprimir
             if($print) $this->PrintTicket($sale->id);
 
             $this->noty('Venta Registrada con Éxito');
