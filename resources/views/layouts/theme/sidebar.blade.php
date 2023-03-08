@@ -45,7 +45,21 @@
                 <div class="side-menu__title"> REPORTES </div>
             </a>
         </li>
+        <div class="side-nav__devider my-6"></div>
+        <li>
+            <a href="{{route('dash')}}" class="side-menu">
+                <div class="side-menu__icon"> <i class="fa-solid fa-signal"></i> </div>
+                <div class="side-menu__title"> Estadisticas </div>
+            </a>
+        </li>
+        <li>
+            <a href="{{route('settings')}}" class="side-menu">
+                <div class="side-menu__icon"> <i data-feather="settings"></i> </div>
+                <div class="side-menu__title"> CONFIGURACIONES </div>
+            </a>
+        </li>
     </ul>
 
-
+    
+    
 </nav>

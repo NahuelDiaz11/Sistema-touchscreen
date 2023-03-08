@@ -43,13 +43,25 @@
         </li>
         <div class="side-nav__devider my-6"></div>
         <li>
-            <a href="#" class="menu">
+            <a href="{{route('reports')}}" class="menu">
                 <div class="menu__icon"> <i data-feather="calendar"></i> </div>
                 <div class="menu__title"> Reportes </div>
             </a>
         </li>
+        <div class="side-nav__devider my-6"></div>
+        <a href="{{route('dash')}}" class="menu">
+            <div class="menu__icon"> <i class="fa-solid fa-signal"></i></div>
+            <div class="menu__title"> Estadisticas </div>
+        </a>
+
+        <a href="{{route('settings')}}" class="menu">
+            <div class="menu__icon"> <i data-feather="settings"></i> </div>
+            <div class="menu__title"> Configuraciones </div>
+        </a>
 
     </ul>
+
+    
 
 </div>
 <!-- END: Mobile Menu -->
