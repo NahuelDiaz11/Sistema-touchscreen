@@ -84,16 +84,7 @@
         @include('livewire.users.form')
 
     @endif
-    @include('livewire.sales.keyboard')
+    
 
-    <script>
-         const inputSearch = document.getElementById('search')
-        inputSearch.addEventListener('change', (e) => {
-            @this.search = e.target.value;
-        })
-
-
-        KioskBoard.run('.kioskboard', {});
-    </script>
 
 </div>
