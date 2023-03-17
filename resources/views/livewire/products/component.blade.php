@@ -55,7 +55,7 @@
                                         <td class="text-center">{{ strtoupper($product->category) }}</td>
                                         <td class="text-center font-medium">${{ number_format($product->cost, 2) }}</td>
                                         <td class="text-center font-medium">${{ number_format($product->price, 2) }}</td>
-                                        <td class="text-center font-medium">${{ $product->stock }}</td>
+                                        <td class="text-center font-medium">{{ $product->stock }}</td>
 
 
                                         <td class="dark:border-dark-5 text-center">
