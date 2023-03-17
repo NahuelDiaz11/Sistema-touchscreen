@@ -65,7 +65,7 @@ usar usuario para prueba:
 ```
 ## Screenshots
 
-[![Captura-desde-2023-02-22-11-41-38.png](https://i.postimg.cc/ZnkvDYy4/Captura-desde-2023-02-22-11-41-38.png)](https://postimg.cc/xJRdX2R4)
-[![Captura-desde-2023-02-15-09-39-00.png](https://i.postimg.cc/sgbhcFw2/Captura-desde-2023-02-15-09-39-00.png)](https://postimg.cc/sM9xjLFF)
-[![Captura-desde-2023-02-15-09-40-59.png](https://i.postimg.cc/jqG9fCrw/Captura-desde-2023-02-15-09-40-59.png)](https://postimg.cc/qgxjVJq4)
+[![products.png](https://i.postimg.cc/X7kG7Vk6/products.png)](https://postimg.cc/RNqVgxYg)
+[![Ventas.png](https://i.postimg.cc/t4gTqFgF/Ventas.png)](https://postimg.cc/4mrZw7V3)
+[![dashboard.png](https://i.postimg.cc/fbGTfFfv/dashboard.png)](https://postimg.cc/zLkrJxML)
 
