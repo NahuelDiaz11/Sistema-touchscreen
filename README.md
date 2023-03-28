@@ -56,13 +56,16 @@ Iniciar el server
 ```bash
   npm run dev
 ```
-##### ** te recomiendo usar laragon **
 
-usar usuario para prueba:
+
+## Usar usuario para prueba:
 ```bash
+    proyecto en digital ocean: https://stingray-app-9uo9k.ondigitalocean.app/
     user: prueba@gmail.com
-    pass: 123456
+    pass: 123456789
 ```
+
+##### ** Le falta terminar algunos detalles **
 ## Screenshots
 
 [![products.png](https://i.postimg.cc/X7kG7Vk6/products.png)](https://postimg.cc/RNqVgxYg)
